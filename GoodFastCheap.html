@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good Fast Cheap</title>
+    <style>
+        div{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input id="fast" type="range" style="width: 50px" min="0" max="100" value="0" onclick="changeFast()"><label>FAST</label><br>
+    <input id="Good" type="range" style="width: 50px" min="0" max="100" value="0" onclick="changeGood()"><label>GOOD</label><br>
+    <input id="Cheap" type="range" style="width: 50px" min="0" max="100" value="0" onclick="changeCheap()"><label>CHEAP</label>
+</div>
+<script>
+    let fast=document.getElementById('fast')
+    let good=document.getElementById('Good')
+    let cheap=document.getElementById('Cheap')
+    let isFast
+    let isGood
+    let isCheap
+    function changeFast() {
+        isFast=!false
+        if(isFast){
+            fast.value=100;
+        }else {
+            fast.value=0;
+        }
+        if(isFast&&isGood){
+            isCheap=false
+            cheap.value=0
+        }
+    }
+    function changeGood() {
+        isGood=!false
+        if(isGood){
+            good.value=100
+        }else {
+            good.value=0
+        }
+        if(isGood&&isCheap){
+            isFast=false
+            fast.value=0
+        }
+    }
+    function changeCheap() {
+        isCheap=!false
+        if(isCheap){
+            cheap.value=100
+        }else {
+            cheap.value=0
+        }
+        if(isCheap&&isFast){
+            isGood=false
+            good.value=0
+        }
+    }
+</script>
+</body>
+</html>
